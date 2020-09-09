@@ -1,0 +1,129 @@
+<!--TicTacToe By pjkoju-->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <title>Tic-Tac-Toe</title>
+    <style type="text/css">
+        *{
+            margin:0px;
+            box-sizing: border-box;
+        }
+        .body{font-family: "Cinzel";
+        position: relative;
+        }
+        .box{
+            font-family: "Montserrat";
+            background-image:linear-gradient(to bottom,#ff9900,crimson);
+            width:100%;
+            height:100vh;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 3px;
+            align-content: center;
+            justify-content: center;
+        }
+        div[id*="area"]{
+            cursor: pointer;
+            width:80px;
+            height:80px;
+            line-height: 80px;
+            background-color:#28f0f0;
+            font-size: 50px;
+            text-align: center;
+            box-shadow:inset 0px 0px 4px black;
+        }
+        #info{
+            font-family: "Cinzel";
+            font-size:15px;
+            position:fixed;
+            top:0px;
+            left:0px;
+            width:100%;
+            text-align: center;
+            padding:20px;
+            background-color:#28f0f0;
+            z-index: 2;
+            box-shadow: 0px 0px 10px black;
+        }
+        button{
+            outline:none;
+            border:none;
+            box-shadow: 0px 0px 10px black;
+            border-radius: 70px;
+        }
+        #replay{
+            background-color: #28f0f0;
+            color:crimson;
+            width: 100px;
+            position: absolute;
+            left:50%;
+            margin-left: -50px;
+            bottom: 20px;
+            font-size: 25px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+        <div class="box">
+            <div id="area0" onclick="dis('0')"></div>
+            <div id="area1" onclick="dis('1')"></div>
+            <div id="area2" onclick="dis('2')"></div>
+            <div id="area3" onclick="dis('3')"></div>
+            <div id="area4" onclick="dis('4')"></div>
+            <div id="area5" onclick="dis('5')"></div>
+            <div id="area6" onclick="dis('6')"></div>
+            <div id="area7" onclick="dis('7')"></div>
+            <div id="area8" onclick="dis('8')"></div>
+        </div>
+        <div id="info">
+            <p>This is only two-players <b>Tic-Tac-Toe</b> game used as a mini-project.<br>
+            <u>Note(<b>Player1</b> moves first with <b>O</b>)</u></p>
+        </div>
+        <button id="replay" onclick="Reload()">Replay</button>
+    <script type="text/javascript">
+        var no = 0;
+        var a = document.getElementById("area0");
+        var b = document.getElementById("area1");
+        var c = document.getElementById("area2");
+        var d = document.getElementById("area3");
+        var e = document.getElementById("area4");
+        var f = document.getElementById("area5");
+        var g = document.getElementById("area6");
+        var h = document.getElementById("area7");
+        var i = document.getElementById("area8");
+        //sorry for very bad if..condition
+        function check(){
+            if((a.innerHTML==b.innerHTML && b.innerHTML==c.innerHTML && a.innerHTML=="X")||(d.innerHTML==e.innerHTML && e.innerHTML==f.innerHTML && e.innerHTML=="X")||(g.innerHTML==h.innerHTML && h.innerHTML==i.innerHTML && g.innerHTML=="X")||(a.innerHTML==d.innerHTML && d.innerHTML==g.innerHTML && a.innerHTML=="X")||(b.innerHTML==e.innerHTML && e.innerHTML==h.innerHTML && b.innerHTML=="X")||(c.innerHTML==f.innerHTML && f.innerHTML==i.innerHTML && c.innerHTML=="X")||(a.innerHTML==e.innerHTML && e.innerHTML==i.innerHTML && a.innerHTML=="X")||(c.innerHTML==e.innerHTML && e.innerHTML==g.innerHTML && c.innerHTML=="X")){
+                alert("Winner is Player2 🎆🎉🎆🕺💃");
+            }
+            else if((a.innerHTML==b.innerHTML && b.innerHTML==c.innerHTML && a.innerHTML=="O")||(d.innerHTML==e.innerHTML && e.innerHTML==f.innerHTML && e.innerHTML=="O")||(g.innerHTML==h.innerHTML && h.innerHTML==i.innerHTML && g.innerHTML=="O")||(a.innerHTML==d.innerHTML && d.innerHTML==g.innerHTML && a.innerHTML=="O")||(b.innerHTML==e.innerHTML && e.innerHTML==h.innerHTML && b.innerHTML=="O")||(c.innerHTML==f.innerHTML && f.innerHTML==i.innerHTML && c.innerHTML=="O")||(a.innerHTML==e.innerHTML && e.innerHTML==i.innerHTML && a.innerHTML=="O")||(c.innerHTML==e.innerHTML && e.innerHTML==g.innerHTML && c.innerHTML=="O")){
+                alert("Winner is Player1🎆🎉🎆🕺💃");
+            }
+            
+        }
+        //Displays X and O turnwise
+        function dis(x){
+        if(document.getElementById("area"+x).innerHTML==""){
+            if(no%2==0){
+                document.getElementById("area"+x).innerHTML = "O";
+            }
+            else{
+            document.getElementById("area"+x).innerHTML = "X"; 
+            }
+        no++;
+        }
+        check();
+        }
+        //to reload the game
+        function Reload(){
+            for(var y=0;y<9;y++){
+                document.getElementById("area"+y).innerHTML = "" ;
+                no=0;
+            }
+        }
+    </script>
+</body>
+</html>
